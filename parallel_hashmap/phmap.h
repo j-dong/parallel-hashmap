@@ -1896,7 +1896,7 @@ private:
     {
         template <class K, class... Args>
         size_t operator()(const K& key, Args&&...) const {
-            return phmap_mix<sizeof(size_t)>()(h(key));
+            return h(key);
         }
         const hasher& h;
     };
@@ -3753,7 +3753,7 @@ private:
     {
         template <class K, class... Args>
         size_t operator()(const K& key, Args&&...) const {
-            return phmap_mix<sizeof(size_t)>()(h(key));
+            return h(key);
         }
         const hasher& h;
     };

@@ -12,7 +12,7 @@
 // ---------------------------------------------------------------------------
 
 #ifdef _MSC_VER
-    #pragma warning(push)  
+    #pragma warning(push)
     #pragma warning(disable : 4514) // unreferenced inline function has been removed
     #pragma warning(disable : 4710) // function not inlined
     #pragma warning(disable : 4711) // selected for automatic inline expansion
@@ -22,17 +22,13 @@
 #include <utility>
 #include <mutex>
 
-#if defined(PHMAP_USE_ABSL_HASH) && !defined(ABSL_HASH_HASH_H_)
+#if !defined(ABSL_HASH_HASH_H_)
     namespace absl { template <class T> struct Hash; };
 #endif
 
 namespace phmap {
 
-#if defined(PHMAP_USE_ABSL_HASH)
     template <class T> using Hash = ::absl::Hash<T>;
-#else
-    template <class T> struct Hash;
-#endif
 
     template <class T> struct EqualTo;
     template <class T> struct Less;
